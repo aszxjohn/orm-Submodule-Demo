@@ -1,8 +1,7 @@
 package com.example.orm.entity;
 
 import java.sql.Timestamp;
-
-import org.springframework.core.type.filter.AbstractClassTestingTypeFilter;
+import java.util.List;
 
 import com.example.orm.base.BaseEntity;
 
@@ -11,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -91,6 +91,8 @@ public class Client extends BaseEntity {
 
 	@Column(name="two_factor_code_expiry_time")
 	private Timestamp twoFactorCodeExpiryTime;
-
+	
+	@OneToMany(mappedBy="client")
+	private List<ClientInfo> clientInfos;
 
 }

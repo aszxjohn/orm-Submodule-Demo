@@ -11,6 +11,7 @@ public interface ClientRepository extends JpaRepository<Client, Long>, JpaSpecif
 
 	Optional<Client> findByEmail(String email);
 	Optional<Client>  findByRegistrationProgressVerificationCode(String registrationProgressVerificationCode);
+	Optional<Client> findByRegistrationVerificationCode(String registrationVerificationCode);
 
 
 }
