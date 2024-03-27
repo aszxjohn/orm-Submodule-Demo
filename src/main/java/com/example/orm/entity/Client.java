@@ -10,7 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,9 +29,6 @@ public class Client extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="client_id")
 	private Long clientId;
-
-	@Column(name="client_info_id")
-	private Long clientInfoId;
 
 	@Column(name="customer_number")
 	private String customerNumber;
@@ -92,7 +89,7 @@ public class Client extends BaseEntity {
 	@Column(name="two_factor_code_expiry_time")
 	private Timestamp twoFactorCodeExpiryTime;
 	
-	@OneToMany(mappedBy="client")
-	private List<ClientInfo> clientInfos;
+	@OneToOne(mappedBy="client")
+	private ClientInfo clientInfo;
 
 }

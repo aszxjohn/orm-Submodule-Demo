@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import com.example.orm.entity.ClientInfo;
 
 public interface ClientInfoRepository extends JpaRepository<ClientInfo, Long>, JpaSpecificationExecutor<ClientInfo> {
-	Optional<ClientInfo> findByClientId(Long clientId);
+
+	Optional<ClientInfo> findByClient_ClientId(Long clientId);
 
 
 }

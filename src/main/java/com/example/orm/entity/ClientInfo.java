@@ -1,14 +1,14 @@
 package com.example.orm.entity;
 
-import java.io.Serializable;
+import com.example.orm.base.BaseEntity;
 
-import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,13 +22,13 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="client_info")
-public class ClientInfo implements Serializable {
+public class ClientInfo extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="client_info_id")
-	private long clientInfoId;
+	private Long clientInfoId;
 
 	@Column(name="client_address")
 	private String clientAddress;
@@ -40,7 +40,7 @@ public class ClientInfo implements Serializable {
 	private String phoneNumbe;
 
 	//bi-directional many-to-one association to Client
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="client_id")
 	private Client client;
 
