@@ -4,12 +4,14 @@ import com.example.orm.base.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,8 +42,8 @@ public class ClientInfo extends BaseEntity {
 	private String phoneNumbe;
 
 	//bi-directional many-to-one association to Client
-	@OneToOne
-	@JoinColumn(name="client_id")
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="client_id", referencedColumnName = "client_id")
 	private Client client;
 
 }

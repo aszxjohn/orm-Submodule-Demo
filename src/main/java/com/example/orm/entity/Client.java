@@ -5,8 +5,10 @@ import java.util.List;
 
 import com.example.orm.base.BaseEntity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -89,7 +91,7 @@ public class Client extends BaseEntity {
 	@Column(name="two_factor_code_expiry_time")
 	private Timestamp twoFactorCodeExpiryTime;
 	
-	@OneToOne(mappedBy="client")
+	@OneToOne(mappedBy="client", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private ClientInfo clientInfo;
 
 }
